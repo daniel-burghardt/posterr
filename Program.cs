@@ -1,16 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using Posterr.Models;
+using Posterr.Repositories;
+using Posterr.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("SqliteConnectionString");
-builder.Services.AddSqlite<PosterrDbContext>(connectionString);
+var connectionString = builder.Configuration.GetConnectionString("DatabaseConnectionString2");
+builder.Services.AddSqlServer<PosterrDbContext>(connectionString);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient<PostsRepository>();
+builder.Services.AddTransient<PostsService>();
+builder.Services.AddTransient<UsersService>();
 
 var app = builder.Build();
 
