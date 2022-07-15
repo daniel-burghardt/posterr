@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Posterr.Models;
+using Posterr.Repositories;
+using Posterr.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient<PostsRepository>();
+builder.Services.AddTransient<PostsService>();
+builder.Services.AddTransient<UsersRepository>();
+builder.Services.AddTransient<UsersService>();
 
 var app = builder.Build();
 
