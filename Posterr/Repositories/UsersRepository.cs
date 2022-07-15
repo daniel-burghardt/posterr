@@ -4,7 +4,7 @@ using Posterr.Models.Users;
 
 namespace Posterr.Repositories
 {
-	public class UsersRepository
+	public class UsersRepository : IUsersRepository
 	{
 		public PosterrDbContext dbContext;
 

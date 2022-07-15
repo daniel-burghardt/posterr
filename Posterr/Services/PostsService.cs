@@ -8,10 +8,10 @@ namespace Posterr.Services
 {
 	public class PostsService
 	{
-		private readonly PostsRepository postsRepository;
+		private readonly IPostsRepository postsRepository;
 		private readonly IMapper mapper;
 
-		public PostsService(PostsRepository postsRepository, IMapper mapper)
+		public PostsService(IPostsRepository postsRepository, IMapper mapper)
 		{
 			this.postsRepository = postsRepository;
 			this.mapper = mapper;

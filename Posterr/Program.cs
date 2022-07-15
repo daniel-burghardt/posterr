@@ -14,9 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddTransient<PostsRepository>();
+builder.Services.AddTransient<IPostsRepository, PostsRepository>();
+builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 builder.Services.AddTransient<PostsService>();
-builder.Services.AddTransient<UsersRepository>();
 builder.Services.AddTransient<UsersService>();
 
 var app = builder.Build();

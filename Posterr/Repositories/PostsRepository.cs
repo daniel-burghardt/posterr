@@ -5,7 +5,7 @@ using Posterr.Models.Posts;
 
 namespace Posterr.Repositories
 {
-	public class PostsRepository
+	public class PostsRepository : IPostsRepository
 	{
 		public PosterrDbContext dbContext;
 

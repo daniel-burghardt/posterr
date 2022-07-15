@@ -7,8 +7,8 @@ namespace Posterr.Services
 {
 	public class UsersService
 	{
-		private readonly UsersRepository usersRepository;
-		private readonly PostsRepository postsRepository;
+		private readonly IUsersRepository usersRepository;
+		private readonly IPostsRepository postsRepository;
 		private readonly IMapper mapper;
 
 		public UsersService(UsersRepository usersRepository, PostsRepository postsRepository, IMapper mapper)
