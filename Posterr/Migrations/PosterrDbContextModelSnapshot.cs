@@ -51,18 +51,21 @@ namespace Posterr.Migrations
 
             modelBuilder.Entity("Posterr.Models.Users.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+
+                    b.Property<DateTimeOffset>("JoinedOn")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(14)
                         .HasColumnType("nvarchar(14)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.HasIndex("Username")
                         .IsUnique();
@@ -72,18 +75,27 @@ namespace Posterr.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            UserId = 1,
+                            JoinedOn = new DateTimeOffset(new DateTime(2022, 7, 15, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -3, 0, 0, 0)),
                             Username = "user_one"
                         },
                         new
                         {
-                            Id = 2,
+                            UserId = 2,
+                            JoinedOn = new DateTimeOffset(new DateTime(2022, 7, 16, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -3, 0, 0, 0)),
                             Username = "user_two"
                         },
                         new
                         {
-                            Id = 3,
+                            UserId = 3,
+                            JoinedOn = new DateTimeOffset(new DateTime(2022, 7, 17, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -3, 0, 0, 0)),
                             Username = "user_three"
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            JoinedOn = new DateTimeOffset(new DateTime(2022, 7, 18, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, -3, 0, 0, 0)),
+                            Username = "user_four"
                         });
                 });
 

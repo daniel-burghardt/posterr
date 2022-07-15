@@ -6,8 +6,6 @@ services:
             - "8080:80"
         depends_on:
             - db
-        environment:
-            - ASPNETCORE_ENVIRONMENT=Development
     db:
         image: "mcr.microsoft.com/mssql/server"
         environment:
