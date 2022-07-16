@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Posterr", "Posterr\Posterr.csproj", "{5CE0442D-B46B-440E-B35B-AD6A22D05530}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PosterrTests", "PosterrTests\PosterrTests.csproj", "{97CF6441-6DEC-4E25-BC17-A3A74B361AAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Posterr.Tests", "PosterrTests\Posterr.Tests.csproj", "{97CF6441-6DEC-4E25-BC17-A3A74B361AAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,7 +11,7 @@ namespace Posterr.Services
 		private readonly IPostsRepository postsRepository;
 		private readonly IMapper mapper;
 
-		public UsersService(UsersRepository usersRepository, PostsRepository postsRepository, IMapper mapper)
+		public UsersService(IUsersRepository usersRepository, IPostsRepository postsRepository, IMapper mapper)
 		{
 			this.usersRepository = usersRepository;
 			this.postsRepository = postsRepository;

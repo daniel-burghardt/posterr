@@ -1,19 +1,13 @@
 # posterr
 
+### To run the unit tests:
+`docker build --target tests -t tests:latest .`
 
-https://localhost:7039/swagger/index.html
+### To run the container:
+`docker-compose up`
 
-docker build -t posterr .
-docker run -d -p 8080:80 --name posterrapp posterr
+### To rebuild and run the container:
+`docker-compose up --build`
 
-docker-compose up --build
-
-
-
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=PosterrDB_123" -p 1433:1433 -d mcr.microsoft.com/mssql/server
-server localhost
-
-
-Next:
-
-setup user in db so we can create posts
+Access it through:
+(https://localhost:8080/swagger/index.html)
