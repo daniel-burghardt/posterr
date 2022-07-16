@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Posterr.DTOs.Posts;
-using Posterr.Models.Posts;
 using Posterr.Services;
-using System.Text.Json;
 
 namespace Posterr.Controllers
 {
@@ -22,10 +20,10 @@ namespace Posterr.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetPosts([FromQuery] PostsQueryParametersDto queryParameters)
 		{
-			// We need to convert the list of PostDto's into a list of objects so that the Model Binder can serialize the polymorphic types properly			
+			// We need to convert the list of PostDto's into a list of objects so that the Model Binder can serialize the derived types properly
+			// https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-polymorphism
 			var posts = await postsService.GetPosts(queryParameters);
 			var postsObjects = posts.ToList<object>();
-			// 3rd level deep dont contain derived props
 
 			return Ok(postsObjects);
 		}
@@ -33,28 +31,49 @@ namespace Posterr.Controllers
 		[HttpPost("post")]
 		public async Task<IActionResult> Post(CreateOriginalPostDto postDto)
 		{
-			var currentUser = await usersService.GetCurrentUser();
-			var postId = await postsService.CreatePost(postDto, currentUser);
+			try
+			{
+				var currentUser = await usersService.GetCurrentUser();
+				var postId = await postsService.CreatePost(postDto, currentUser);
 
-			return Ok(postId);
+				return Ok(postId);
+			}
+			catch (ArgumentException e)
+			{
+				return BadRequest(e.Message);
+			}
 		}
 
 		[HttpPost("quote")]
 		public async Task<IActionResult> Quote(CreateQuotePostDto postDto)
 		{
-			var currentUser = await usersService.GetCurrentUser();
-			var postId = await postsService.CreatePost(postDto, currentUser);
+			try
+			{
+				var currentUser = await usersService.GetCurrentUser();
+				var postId = await postsService.CreatePost(postDto, currentUser);
 
-			return Ok(postId);
+				return Ok(postId);
+			}
+			catch (ArgumentException e)
+			{
+				return BadRequest(e.Message);
+			}
 		}
 
 		[HttpPost("repost")]
 		public async Task<IActionResult> Repost(CreateRepostDto postDto)
 		{
-			var currentUser = await usersService.GetCurrentUser();
-			var postId = await postsService.CreatePost(postDto, currentUser);
+			try
+			{
+				var currentUser = await usersService.GetCurrentUser();
+				var postId = await postsService.CreatePost(postDto, currentUser);
 
-			return Ok(postId);
+				return Ok(postId);
+			}
+			catch (ArgumentException e)
+			{
+				return BadRequest(e.Message);
+			}
 		}
 	}
 }

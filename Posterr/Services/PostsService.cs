@@ -56,7 +56,7 @@ namespace Posterr.Services
 		{
 			var postsToday = await postsRepository.TotalPostsByUser(user.UserId, DateOnly.FromDateTime(DateTime.Now));
 			if (postsToday >= 5)
-				throw new Exception("User has reached the limit of posts per day");
+				throw new ArgumentException("User has reached the limit of posts per day");
 
 			var post = mapper.Map<T>(postDto);
 			post.UserId = user.UserId;

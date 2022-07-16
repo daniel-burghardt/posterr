@@ -24,9 +24,9 @@ namespace Posterr.Repositories
 				.Include(x => ((Repost)x).RepostedPost)
 				.Include(x => ((QuotePost)x).QuotedPost)
 				// If the user base grows, consider using a more performant type of pagination (e.g.: keyset pagination)
+				.OrderByDescending(x => x.CreatedAt)
 				.Skip(queryParameters.PageSize * (queryParameters.CurrentPage - 1))
 				.Take(queryParameters.PageSize)
-				.OrderByDescending(x => x.CreatedAt)
 				.ToListAsync();
 		}
 

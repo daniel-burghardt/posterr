@@ -14,15 +14,16 @@ namespace Posterr.DTOs.Posts
 			public string Content { get; set; }
 		}
 
+		// QuotedPost and RepostedPost are objects rather than a PostDto's so that the Model Binder can properly serialize the derived types
 		public class QuotePostDto : PostDto
 		{
 			public string Content { get; set; }
-			public PostDto QuotedPost { get; set; }
+			public object QuotedPost { get; set; }
 		}
 
 		public class RepostDto : PostDto
 		{
-			public PostDto RepostedPost { get; set; }
+			public object RepostedPost { get; set; }
 		}
 	}
 }
