@@ -25,12 +25,8 @@ var app = builder.Build();
 using var db = app.Services.CreateScope().ServiceProvider.GetRequiredService<PosterrDbContext>();
 await db.Database.MigrateAsync();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-	app.UseSwagger();
-	app.UseSwaggerUI();
-//}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
