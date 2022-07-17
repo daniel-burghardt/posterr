@@ -1,5 +1,6 @@
 # posterr
 ###### by Daniel Burghardt
+Posterr is a Twitter-like app where users can share and read each other's posts. The application is built on .NET 6.
 
 ## Running the app
 ### Using Docker
