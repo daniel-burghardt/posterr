@@ -7,7 +7,7 @@ Posterr is a Twitter-like app where users can share and read each other's posts.
 #### To run the container:
 `docker-compose up`
 
-Access it at: https://localhost:8080/swagger/index.html
+Access it at: http://localhost:8080/swagger/index.html
 
 #### To rebuild and run the container (in case of any modifications):
 `docker-compose up --build`
