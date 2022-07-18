@@ -44,7 +44,7 @@ namespace PosterrTests
 
 			postsRepository.Setup(x => x.TotalPostsByUser(currentUser.UserId, DateOnly.FromDateTime(DateTime.Now))).ReturnsAsync(5);
 
-			Assert.ThrowsAsync<Exception>(async () => await postsService.CreatePost(new CreateOriginalPostDto()
+			Assert.ThrowsAsync<ArgumentException>(async () => await postsService.CreatePost(new CreateOriginalPostDto()
 			{
 				Content = "Hi!"
 			}, currentUser), "User has reached the limit of posts per day");
